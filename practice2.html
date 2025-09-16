@@ -1,36 +1,55 @@
 <html>
     <head>
-        <title>event</title>
+        <title>CSS Font Control</title>
     </head>
     <body>
-        <h1>EECS 348 Lab Three Practice Two</h1>
+        <h1>CSS Font Control</h1>
         <style>
-            #paragraph { border-style: solid; border-width: 5px; }
+            #paragraph {border-style: solid; border-width: 2px; text-align: center;}
         </style>
-        <div id="paragraph">Paragraph to be altered.</div>
-        <script type="text/javascript" src="functions.js"></script>
-        Border R(0-255):
+        <div id="paragraph">Paragraph with dummy text to test changing border color and width and background color using HTML and JavaScript.</div>
+        <br>
+        Border R (0-255):
         <input id="border_R" type="text" value="">
         <br>
-        Border G(0-255):
+        Border G (0-255):
         <input id="border_G" type="text" value="">
         <br>
-        Border B(0-255):
+        Border B (0-255):
         <input id="border_B" type="text" value="">
         <br>
         Border Width:
         <input id="border_width" type="text" value="">
         <br>
-        Background R(0-255):
+        Background R (0-255):
         <input id="bg_R" type="text" value="">
         <br>
-        Background G(0-255):
+        Background G (0-255):
         <input id="bg_G" type="text" value="">
         <br>
-        Background B(0-255):
+        Background B (0-255):
         <input id="bg_B" type="text" value="">
         <br>
-        <button onclick="alert_paragraph_color()">Change the color!</button>
+        <button onclick="apply_settings()">Apply Settings</button>
         <br>
+        <script>
+            function apply_settings() {
+                let para = document.getElementById("paragraph");
+
+                let borderR = parseInt(document.getElementById("border_R").value) || 0;
+                let borderG = parseInt(document.getElementById("border_G").value) || 0;
+                let borderB = parseInt(document.getElementById("border_B").value) || 0;
+                let borderWidth = document.getElementById("border_width").value || "2";
+
+                let bgR = parseInt(document.getElementById("bg_R").value) || 255;
+                let bgG = parseInt(document.getElementById("bg_G").value) || 255;
+                let bgB = parseInt(document.getElementById("bg_B").value) || 255;
+
+                para.style.borderColor = `rgb(${borderR}, ${borderG}, ${borderB})`;
+                para.style.borderWidth = borderWidth + "px";
+                para.style.borderStyle = "solid";
+                para.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
+            }
+        </script>
     </body>
 </html>
